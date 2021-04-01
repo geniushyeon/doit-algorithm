@@ -148,5 +148,72 @@ public class ReverseArray { // 배열 요소 교환
 
     }
 }
+```
 
+### 두 배열의 비교
+```java
+import java.util.Scanner;
+
+class ArrayEqual {
+    // 두 배열 a, b의 모든 요소가 같은가?
+    public boolean equals(int[] a, int[] b) {
+        if (a.length != b.length) {
+            return false;
+        } // a와 b의 길이가 다르면 false 반환
+
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] != b[i]) {
+                return false;
+            } // 하나라도 다른 요소가 있으면 false 반환
+        }
+
+        return true;
+    }
+}
+```
+### 기수 변환
+- 10진수 정수를 n진수 정수로 변환하려면
+1. 정수를 n으로 나눈 나머지를 구하는 동시에
+2. 그 몫에 대해 나눗셈을 반복
+3. 이 과정을 몫이 0이 될 때까지 반복하고
+4. 이런 과정으로 구한 나머지를 거꾸로 늘어 놓은 숫자 => 기수로 변환한 숫자
+```java
+package chap02;
+
+// 입력받은 10진수를 2진수 ~ 36진수로 기수 변환하여 나타냄
+public class CardConRev {
+    public static int cardConvR(int x, int r, char[] d) {
+        int digits = 0; // 변환 후의 자릿수
+        String dChar = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+        do {
+            d[digits++] = dChar.charAt(x % r); // r로 나눈 나머지를 저장
+            x /= r;
+        } while (x != 0);
+        
+        return digits;
+    }
+}
+```
+- 10진수(Decimal)
+```text
+0 1 2 3 4 5 6 7 8 9
+```
+10종류의 숫자를 사용하여 수를 나타냄
+- 8진수(Octal)
+```text
+0 1 2 3 4 5 6 7
+```
+8진수의 각 자리는 아랫자리부터 8의 거듭제곱 값을 가짐
+
+- 16진수(Hexadecimal)
+```text
+0 1 2 3 4 5 6 7 8 9 A B C D E F
+알파벳은 소문자라도 상관없음
+```
+
+### 소수의 나열
+- 어떤 정수 n은 다음의 조건을 만족하면 소수라고 판단할 수 있다.
+```text
+n의 제곱근 이하의 어떤 소수로도 나누어 떨어지지 않는다.
 ```
