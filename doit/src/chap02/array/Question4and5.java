@@ -1,6 +1,6 @@
-package chap02;
+package chap02.array;
 
-public class ArrayCopyExample {
+public class Question4and5 {
     // 배열 b의 모든 요소를 배열 a에 복사하는 메소드
     public static int[] copy(int[] a, int[] b) {
         int num = a.length <= b.length ? a.length : b.length;

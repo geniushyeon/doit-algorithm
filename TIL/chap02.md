@@ -149,7 +149,8 @@ public class ReverseArray { // 배열 요소 교환
     }
 }
 ```
-
+- [연습문제2](src/chap02/../../../doit/src/chap02/Question2.java): 배열 요소를 역순으로 정렬하는 과정을 하나하나 나타내는 프로그램 작성하기
+- [연습문제3](src/chap02/../../../doit/src/chap02/Question3.java): 배열 a의 모든 요소의 합계를 구하여 반환하는 메서드 작성
 ### 두 배열의 비교
 ```java
 import java.util.Scanner;
@@ -171,6 +172,9 @@ class ArrayEqual {
     }
 }
 ```
+- 연습문제4: 배열 b의 모든 요소를 배열 a에 복사하는 메서드 작성
+- 연습문제5: 배열 b의 모든 요소를 배열 a에 역순으로 복사하는 메서드 작성
+  - [코드](src/chap02/../../../doit/src/chap02/Question4and5.java)
 ### 기수 변환
 - 10진수 정수를 n진수 정수로 변환하려면
 1. 정수를 n으로 나눈 나머지를 구하는 동시에
@@ -211,9 +215,56 @@ public class CardConRev {
 0 1 2 3 4 5 6 7 8 9 A B C D E F
 알파벳은 소문자라도 상관없음
 ```
-
+- [연습문제6](src/chap02/../../../doit/src/chap02/ReverseArray.java): 배열의 앞쪽에 윗자리를 넣어두는 메소드 작성
+- [연습문제7](chap02/../../doit/src/chap02/Question7.java): 기수 변환 과정을 자세히 나타내는 프로그램 작성
 ### 소수의 나열
 - 어떤 정수 n은 다음의 조건을 만족하면 소수라고 판단할 수 있다.
 ```text
 n의 제곱근 이하의 어떤 소수로도 나누어 떨어지지 않는다.
+```
+
+### 다차원 배열
+- 2차원 배열: 배열을 구성 요소로 하는 것
+- 3차원 배열: 2차원 배열을 구성 요소로 하는 것
+
+### 한 해의 경과 일 수를 계산하는 프로그램
+- m월 d일의 그 해 경과 일 수 = 1월, 2월 ..., m - 1월의 일 수의 합 + d
+```java
+// 윤년인지 판단 후 경과 일 수 구하기
+public class Question8 {
+    // 각 달의 일 수
+    static int[][] mdays = {
+            {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}, // 평년
+            {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31} // 윤년
+    };
+
+    // 윤년인지 판단 (윤년: 1 / 평년: 0)
+    static int isLeap(int year) {
+        return (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) ? 1 : 0;
+    }
+
+    // 서기 year년 month월 day일의 그 해 경과 일 수를 구함
+    static int dayOfYear(int year, int month, int day) {
+        int days = day;
+
+        for (int i = 1; i < month; i++) {
+            days += mdays[isLeap(year)][i - 1];
+        }
+
+        return days;
+    }
+}
+```
+- [연습문제8](chap02/../../doit/src/chap02/Question8.java): dayOfYear 메서드를 while문을 사용하여 구현하기
+- [연습문제9](chap02/../../doit/src/chap02/Question9.java): year년 month월 day일의 그 해 남은 일 수(ex. 12월 31일이면 0, 12월 30일이면 1)를 구하는 leftDaysOfYear 메서드 작성하기
+
+### 다차원 배열의 내부
+```java
+// 2행 4열 배열의 선언 - 배열 변수 선언과 본체 생성을 동시에 수행
+int[][] x = new int[2][4];
+// 배열 변수 선언과 본체 생성을 개별적으로 수행
+int[][] x;
+x = new int[2][];
+x[0] = new int[4];
+x[1] = new int[4];
 ```

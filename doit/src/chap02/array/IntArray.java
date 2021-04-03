@@ -1,4 +1,4 @@
-package chap02;
+package chap02.array;
 
 public class IntArray {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package chap02;
+package chap02.array;
 
 import java.util.Random;
 import java.util.Scanner;

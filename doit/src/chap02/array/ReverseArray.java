@@ -1,4 +1,4 @@
-package chap02;
+package chap02.array;
 
 import java.util.Scanner;
 
@@ -34,6 +34,8 @@ public class ReverseArray {
         for (int i = 0; i < num; i++) {
             System.out.println("array[" + i + "] = " + array[i]);
         }
+
+        scanner.close();
 
     }
     

@@ -1,4 +1,4 @@
-package chap02;
+package chap02.array;
 // 1000 이하의 소수를 열거 v2.0
 public class PrimeNumber2 {
     public static void main(String[] args) {

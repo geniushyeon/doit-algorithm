@@ -1,4 +1,4 @@
-package chap02;
+package chap02.array;
 
 public class CloneArray {
     public static void main(String[] args) {

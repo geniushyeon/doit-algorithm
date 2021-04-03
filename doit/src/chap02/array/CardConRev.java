@@ -1,4 +1,4 @@
-package chap02;
+package chap02.array;
 
 import java.util.Scanner;
 
@@ -15,6 +15,25 @@ public class CardConRev {
 
         return digits;
     }
+    // Q6. 배열의 앞쪽에 아랫자리가 아닌 윗자리를 넣어두는 메소드 작성하기
+    public static int cardConv(int x, int r, char[] d) {
+        int digits = 0;
+        String dChar = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        // 1) 배열에 아랫자리부터 저장
+        while (x != 0) {
+            d[digits++] = dChar.charAt(x % r);
+            x /= r;
+        }
+
+        // 2) 위치 바꾸기
+        for (int i = 0; i < d.length / 2; i++) {
+            char temp = d[i];
+            d[i] = d[digits - i - 1];
+            d[digits - i - 1] = temp;
+        }
+
+        return digits;
+    }
 
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
@@ -23,7 +42,7 @@ public class CardConRev {
         int cd; // 기수
         int dno; // 변환 후의 자릿수
         int retry; // 다시 한 번?
-        char[] cno = new char[32]; // 변환 후 각 자리의 숫자를 넣어두는 문자의 배열
+        char[] cno = new char[32]; // 변환 후 각 자리의 숫 자를 넣어두는 문자의 배열
 
         System.out.println("10진수를 기수변환합니다.");
         do {
@@ -48,5 +67,8 @@ public class CardConRev {
             System.out.print("한 번 더 할까요? (1. 예 / 0. 아니오) > ");
             retry = scanner.nextInt();
         } while (retry == 1);
+
+        scanner.close();
+
     }
 }
